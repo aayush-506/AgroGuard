@@ -1,0 +1,1 @@
+export { default as cloudinary } from "./uploader/handle_image"

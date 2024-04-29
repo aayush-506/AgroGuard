@@ -1,0 +1,54 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "useDefineForClassFields": true,
+        "module": "NodeNext",
+        "lib": [
+            "ESNext",
+            "DOM"
+        ],
+        "moduleResolution": "NodeNext",
+        "strict": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        // "noEmit": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "skipLibCheck": true,
+        "outDir": "dist",
+        "paths": {
+            "#@/*": [
+                "./src/*"
+            ],
+            "#@Controllers": [
+                "./src/controllers"
+            ],
+            "#@Middlewares": [
+                "./src/middlewares"
+            ],
+            "#@Models": [
+                "./src/models"
+            ],
+            "#@Routes": [
+                "./src/routes"
+            ],
+            "#@Screts": [
+                "./src/secrets"
+            ],
+            "#@Utils": [
+                "./src/utils"
+            ],
+        }
+    },
+    "include": [
+        "src",
+        "declaration/**/*"
+    ],
+    "exclude": [
+        "./src/middlewares/python",
+        "./src/secrets/_index.ts",
+        "node_modules"
+    ]
+}
