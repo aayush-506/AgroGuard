@@ -24,10 +24,8 @@ jobs:
               with:
                   node-version: "20"
 
-            - name: Changing Directory
-              run: cd Frontend
-
             - name: Installing Dependencies
+              working-directory: Frontend
               run: npm install
 
             - name: Getting the latest commit message
@@ -35,5 +33,6 @@ jobs:
               run: echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
 
             - name: Publish Page
+              working-directory: Frontend
               run: npm run deploy -- -m "${{ steps.commit_msg.outputs.message }}"
               shell: bash
