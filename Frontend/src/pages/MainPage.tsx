@@ -1,11 +1,16 @@
+import { FileSubmit } from "../components/FileSubmit";
+import { Info } from "../components/Info";
 import Navbar from "../components/Navbar";
 
 export function MainPage() {
   return (
-    <div className="h-screen w-screen">
+    <div>
       <Navbar />
-      <div className="absolute">
-        <p>Hello, World!</p>
+      <div className="mt-20 h-screen w-screen">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <FileSubmit />
+          <Info />
+        </div>
       </div>
     </div>
   );
