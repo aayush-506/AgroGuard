@@ -1,7 +1,11 @@
-import Navbar from "./components/Navbar";
+import { MainPage } from "./pages/MainPage";
 
 function App() {
-  return <Navbar />;
+  return (
+    <>
+      <MainPage />
+    </>
+  );
 }
 
-export default App
+export default App;
