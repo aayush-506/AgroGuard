@@ -1,29 +1,51 @@
+import React, { useState } from "react";
+
 export function FileSubmit() {
+  const [file, setFile] = useState<File>();
+  const [img, setImg] = useState<string>("");
+
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const image = e.target.files[0];
+      setFile(image);
+      setImg(URL.createObjectURL(image));
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!file) {
+      console.log("No file");
+    } else {
+      console.log(file);
+    }
+    setFile(undefined);
+    setImg("");
+  };
+
   return (
     <div className="w-1/2 p-6 border-r-2 border-gray-400 flex flex-col justify-center item-center">
-      <h2>
-        Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit
-        enim labore culpa sint ad nisi Lorem pariatur mollit ex esse
-        exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit
-        nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor
-        minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure
-        elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor
-        Lorem duis laboris cupidatat officia voluptate. Culpa proident
-        adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod.
-        Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim.
-        Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa
-        et culpa duis. Lorem ipsum dolor sit amet, officia excepteur ex fugiat
-        reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex
-        esse exercitation amet. Nisi anim cupidatat excepteur officia.
-        Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate
-        voluptate dolor minim nulla est proident. Nostrud officia pariatur ut
-        officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit
-        commodo officia dolor Lorem duis laboris cupidatat officia voluptate.
-        Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis
-        officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt
-        velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur
-        et est culpa et culpa duis.
-      </h2>
+      <form onSubmit={handleSubmit}>
+        <div className="flex justify-center items-center bg-gray-200 h-56 w-auto mb-5 rounded-lg">
+          {img !== "" && <img className="h-40 rounded-lg" src={img} />}
+          <label
+            htmlFor="pic-upload"
+            className=" text-center block cursor-pointer border text-xl font-semibold"
+          >
+            {file === (null || undefined) && ("Add Picture")}
+          </label>
+          <input
+            name="plant"
+            id="pic-upload"
+            className="hidden"
+            type="file"
+            onChange={handleImageChange}
+          />
+        </div>
+        <button className=" w-full text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-4 py-2 text-center">
+          Submit
+        </button>
+      </form>
     </div>
   );
 }
