@@ -9,7 +9,10 @@ export function MainPage() {
       <div className="mt-20 h-screen w-screen">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <FileSubmit />
-          <Info />
+          <Info
+            disease="Disease Name"
+            prevention="Treatment"
+          />
         </div>
       </div>
     </div>
