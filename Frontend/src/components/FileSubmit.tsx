@@ -25,7 +25,7 @@ export function FileSubmit() {
   };
 
   return (
-    <div className="w-1/2 p-6 border-r-2 border-gray-400 flex flex-col justify-center item-center">
+    <div className="w-1/2 p-6 flex flex-col justify-center item-center">
       <form onSubmit={handleSubmit}>
         <div className="flex justify-center items-center bg-gray-200 h-56 w-auto mb-5 rounded-lg">
           {img !== "" && <img className="h-40 rounded-lg" src={img} />}
