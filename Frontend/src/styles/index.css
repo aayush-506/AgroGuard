@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container-full {
+    height: calc(100vh - 16px - 56px);
+}
+
+.transition-outline {
+    transition: 200ms outline linear;
+}
+
+.transite-width {
+    transition: 200ms width linear;
+}
+
+.custom-scale {
+    transition: 200ms scale linear;
+    object-fit: cover;
+    &:hover {
+        scale: 1.1;
+    }
+}
