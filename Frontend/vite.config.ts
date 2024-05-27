@@ -61,7 +61,7 @@ export default defineConfig({
     resolve: {
         alias: {
             "@": "./src",
-            "#Components": "./src/Components"
+            "@Components": "./src/Components"
         }
     }
 })

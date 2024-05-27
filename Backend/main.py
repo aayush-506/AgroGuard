@@ -23,21 +23,21 @@ def home():
 
 @app.route("/disease/predict", methods=["POST"])
 def predict():
-    print(request.form)
     if "image" not in request.files:
         return (
-            jsonify({"status": False, "message": "No file part."}),
+            jsonify({"status": False, "message": "No file part is attached to the request."}),
             400,
         )
 
     file = request.files["image"]
     if file.filename == "":
-        return jsonify({"status": False, "message": "No selected file"}), 400
+        return jsonify({"status": False, "message": "Please select an image before sending the request."}), 400
 
+    # print(file.mimetype)
     if file and "image" in file.mimetype.lower():
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
-        print(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+        # print(os.path.join(app.config["UPLOAD_FOLDER"], filename))
         return (
             jsonify(
                 {
@@ -61,5 +61,5 @@ def predict():
 
 if __name__ == "__main__":
     os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
-    print(os.path.abspath(app.config["UPLOAD_FOLDER"]))
+    # print(os.path.abspath(app.config["UPLOAD_FOLDER"]))
     app.run(debug=True)
