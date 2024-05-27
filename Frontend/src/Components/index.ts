@@ -1,7 +1,5 @@
-import NavigationBar from "./NavigationBar"
-import UploadButton from "./UploadButton"
-import Card from "./Card"
+import Navbar from "./Navbar";
+import UploadForm from "./UploadForm";
+import Card from "./Card";
 
-export {
-    NavigationBar, UploadButton, Card
-}
+export { Card, Navbar, UploadForm };
