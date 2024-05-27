@@ -169,15 +169,15 @@ export default function UploadForm({ image, onPress }: Props) {
           {diseaseState
             ? (
               <>
-                <div className="h-full w-full block p-8">
-                  <h1 className="w-fit font-[900] text-[29px] dark:text-white cursor-pointer">
+                <div className="h-full w-full p-8 flex-col items-center">
+                  <h1 className=" font-[900] text-[29px] dark:text-white cursor-pointer border-b">
                     {diseaseState.disease}
                   </h1>
-                  <p className="w-fit font-[600] mt-[-13px] text-[15px] text-[#8d8d8d] dark:text-[#CECECE]">
+                  <p className=" font-[600] mt-[20px] text-xl text-[#8d8d8d] dark:text-[#CECECE]">
                     Treatments
                   </p>
 
-                  <div className="mt-10 flex flex-col gap-5">
+                  <div className="mt-3 flex flex-col gap-5">
                     {diseaseState.treatments.map(
                       (treatment, index) => (
                         <Card

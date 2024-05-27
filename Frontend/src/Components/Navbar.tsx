@@ -1,3 +1,5 @@
+// #001e3c
+//
 import { FormControlLabel, FormGroup, styled, Switch } from "@mui/material";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -26,7 +28,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     },
   },
   "& .MuiSwitch-thumb": {
-    backgroundColor: theme.palette.mode === "dark" ? "#003892" : "#001e3c",
+    backgroundColor: theme.palette.mode === "dark" ? "#003892" : "#126535",
     width: 32,
     height: 32,
     "&::before": {
@@ -76,9 +78,6 @@ export default function Navbar() {
             />
           </FormGroup>
         }
-        <button className="rounded-[9px] cursor-pointer self-center w-[134px] h-[40px] bg-newGreen-2 text-white text-[17px]">
-          View History
-        </button>
       </div>
     </nav>
   );
