@@ -45,8 +45,8 @@ def predict():
                     "data": {
                         "disease": "Hocust Leaf",
                         "treatments": [
-                            "Do anything you want with it.",
-                            "I don't care what you do with your plants.",
+                            "Lorem ipsum dolor sit amet, qui minim labore adipisicing.",
+                            "Minim sint cillum sint consectetur cupidatat.",
                         ],
                     },
                 }

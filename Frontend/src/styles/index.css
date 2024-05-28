@@ -13,6 +13,7 @@
 .custom-scale {
     transition: 200ms transform linear;
     object-fit: cover;
+
     &:hover {
         transform: scale(1.1);
     }
@@ -28,4 +29,8 @@
 
 .select-color {
     color: white;
+}
+
+.hover-text-overlay:hover .hover-text {
+    opacity: 1;
 }

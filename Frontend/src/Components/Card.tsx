@@ -1,3 +1,4 @@
+// #00745 -> background
 type Props = {
     treatment: string
     highlight?: string
@@ -6,12 +7,10 @@ export default function Card({ treatment, highlight }: Props) {
     return (
         <div
             className={`h-[59px] ${
-                highlight ? `bg-[${highlight}]` : "bg-[#00745F]"
-            } rounded-[13px] p-[10px] flex justify-center items-center overflow-hidden cursor-pointer shadow-card`}
+                highlight ? `bg-[${highlight}]` : "bg-[#5FA940]"
+            } rounded-sm p-[10px] flex justify-center items-center overflow-hidden cursor-pointer `}
         >
-            <p className="text-white">
-                {treatment}
-            </p>
+            <p className="text-white">{treatment}</p>
         </div>
     )
 }
