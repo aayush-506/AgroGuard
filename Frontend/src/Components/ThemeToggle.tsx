@@ -110,7 +110,7 @@ export default function ThemeToggle({ rtype }: Props) {
                 <Select
                     id="theme-select"
                     value={theme}
-                    className="mr-5 h-[40px] w-[105px] bg-newGreen-2"
+                    className="mr-5 h-[40px] w-[105px] bg-green-600 dark:bg-newGreen-2"
                     style={{
                         color: "white",
                     }}
