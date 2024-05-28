@@ -93,7 +93,7 @@ export default function ThemeToggle({ rtype }: Props) {
         <>
             {rtype === "switch" ? (
                 <MaterialUISwitch
-                    className="mr-2"
+                    className="mr-5"
                     checked={theme === "dark"}
                     onChange={(e) => {
                         const checkedStatus: boolean = e.target.checked

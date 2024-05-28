@@ -11,17 +11,20 @@ export default function NavigationBar() {
             <div className="h-full flex flex-col justify-center ml-[15px]">
                 <h1 className="text-[21px] dark:text-white cursor-pointer">
                     Agro
-                    <span className="font-[900] text-green-600 dark:text-newGreen-1">Guard</span>
+                    <span className="font-[900] text-green-600 dark:text-newGreen-1">
+                        Guard
+                    </span>
                 </h1>
                 <p className="text-[14px] text-dark-3 dark:text-white-3 mt-[-5px]">
-                    Safeguarding crops, one leaf at a time!
+                    {/* Safeguarding crops, one leaf at a time! */}
+                    Plant-based diseases detection system
                 </p>
             </div>
             <div className="ml-[auto] flex justify-center items-center">
-                <ThemeToggle rtype="dropdown" />
-                <button className="rounded-[9px] cursor-pointer self-center w-[134px] h-[40px] bg-green-600 dark:bg-newGreen-2 text-white text-[17px]">
+                <ThemeToggle rtype="switch" />
+                {/* <button className="rounded-[9px] cursor-pointer self-center w-[134px] h-[40px] bg-green-600 dark:bg-newGreen-2 text-white text-[17px]">
                     View History
-                </button>
+                </button> */}
             </div>
         </nav>
     )

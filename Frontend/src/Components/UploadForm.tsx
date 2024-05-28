@@ -19,31 +19,33 @@ export default function UploadForm({ image, onPress }: Props) {
         treatments: string[]
     } | null>(null)
 
-
     let uploadImage: undefined | ((data: typeof image) => void) = undefined
-    const handleError = useCallback((error: unknown) => {
-        if (error instanceof AxiosError) {
-            if (!error.response) return console.error(error.message)
+    const handleError = useCallback(
+        (error: unknown) => {
+            if (error instanceof AxiosError) {
+                if (!error.response) return console.error(error.message)
 
-            const statusCode = error.response?.status
-            if (statusCode === 500)
-                toast.error(
-                    "Cannot upload your image due to Server error. Please try again later.",
-                    {
-                        action: {
-                            label: "Try again",
-                            onClick: () => uploadImage?.(image),
-                        },
-                    }
-                )
-            else if (statusCode === 400 || statusCode === 415)
-                toast.error(
-                    error.response.data.message ??
-                        "Cannot process your data due to some user-side errors."
-                )
-        } else if (error instanceof Error) console.error(error.message)
-        else console.error(error)
-    }, [image, uploadImage])
+                const statusCode = error.response?.status
+                if (statusCode === 500)
+                    toast.error(
+                        "Cannot upload your image due to Server error. Please try again later.",
+                        {
+                            action: {
+                                label: "Try again",
+                                onClick: () => uploadImage?.(image),
+                            },
+                        }
+                    )
+                else if (statusCode === 400 || statusCode === 415)
+                    toast.error(
+                        error.response.data.message ??
+                            "Cannot process your data due to some user-side errors."
+                    )
+            } else if (error instanceof Error) console.error(error.message)
+            else console.error(error)
+        },
+        [image, uploadImage]
+    )
 
     // Defining Fuctions
     uploadImage = useCallback(
@@ -122,11 +124,24 @@ export default function UploadForm({ image, onPress }: Props) {
             `}
                 >
                     {image && image.data ? (
-                        <img
-                            src={image.data}
-                            alt="Uploaded"
-                            className="object-fit h-full custom-scale"
-                        />
+                        <div className="relative upload-button">
+                            <img
+                                src={image.data}
+                                alt="Uploaded"
+                                className="object-fit h-full custom-scale"
+                            />
+                            <div className="upload-image-button top-0 bg-[#000000ad] flex flex-col justify-center items-center absolute">
+                                <div className="w-[67%]">
+                                    <h1 className="text-[41px] font-[900] text-white">
+                                        Choose Images
+                                    </h1>
+                                    <p className="text-[17px] text-[#a5a5a5]">
+                                        You can click here to choose new images.
+                                        Upload new images to identify diseases.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     ) : (
                         <>
                             <img
@@ -185,7 +200,10 @@ export default function UploadForm({ image, onPress }: Props) {
                         </>
                     ) : (
                         <Box>
-                            <CircularProgress size={100} title="Processing your request." />
+                            <CircularProgress
+                                size={100}
+                                title="Processing your request."
+                            />
                             <p className="dark:text-white mt-2">
                                 Uploading your image
                                 <br />

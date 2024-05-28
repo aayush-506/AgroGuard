@@ -31,6 +31,19 @@
     color: white;
 }
 
+.upload-image-button {
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 300ms opacity linear;
+    backdrop-filter: blur(5px);
+}
+
+.upload-button:hover .upload-image-button {
+    opacity: 1;
+}
+
+
 .hover-text-overlay:hover .hover-text {
     opacity: 1;
 }
