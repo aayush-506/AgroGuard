@@ -1,7 +1,8 @@
 import NavigationBar from "./NavigationBar"
-import UploadButton from "./UploadButton"
+import UploadForm from "./UploadForm"
 import Card from "./Card"
+import ThemeToggle from "./ThemeToggle"
 
 export {
-    NavigationBar, UploadButton, Card
+    NavigationBar, UploadForm, Card, ThemeToggle
 }

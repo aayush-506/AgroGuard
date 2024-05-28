@@ -12,7 +12,7 @@ type Props = {
         data?: string | null
     } | null
 }
-export default function UploadButton({ image, onPress }: Props) {
+export default function UploadForm({ image, onPress }: Props) {
     // Defining Hooks
     const [diseaseState, setDiseaseState] = useState<{
         disease: string
@@ -75,9 +75,6 @@ export default function UploadButton({ image, onPress }: Props) {
         },
         [handleError]
     )
-
-
-    // function handleError(error: unknown) {}
 
     function prepareFileForUpload(image: string, name: string): File {
         const arr = image.split(",")
@@ -188,7 +185,7 @@ export default function UploadButton({ image, onPress }: Props) {
                         </>
                     ) : (
                         <Box>
-                            <CircularProgress size={100} />
+                            <CircularProgress size={100} title="Processing your request." />
                             <p className="dark:text-white mt-2">
                                 Uploading your image
                                 <br />

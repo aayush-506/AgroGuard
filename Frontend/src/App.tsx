@@ -1,5 +1,5 @@
 import { useRef, useState } from "react"
-import { NavigationBar, UploadButton } from "./Components"
+import { NavigationBar, UploadForm } from "./Components"
 
 export default function App() {
     const fileInputRef = useRef<HTMLInputElement>(null)
@@ -14,7 +14,7 @@ export default function App() {
             <input
                 type="file"
                 accept="image/png, image/jpeg, image/heic, image/webp"
-                multiple
+                placeholder="Choose Images"
                 hidden
                 ref={fileInputRef}
                 onChange={() => {
@@ -39,7 +39,7 @@ export default function App() {
                 }}
             />
             <div className="flex w-full container-full justify-center items-center">
-                <UploadButton
+                <UploadForm
                     image={imageURI}
                     onPress={() => {
                         fileInputRef.current?.click()

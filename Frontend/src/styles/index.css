@@ -11,10 +11,10 @@
 }
 
 .custom-scale {
-    transition: 200ms scale linear;
+    transition: 200ms transform linear;
     object-fit: cover;
     &:hover {
-        scale: 1.1;
+        transform: scale(1.1);
     }
 }
 
@@ -24,4 +24,8 @@
 
 ::-webkit-scrollbar {
     width: 0;
+}
+
+.select-color {
+    color: white;
 }

@@ -8,6 +8,19 @@
     </head>
     <body class="dark:bg-dark-1 h-[100vh]">
         <div id="root" class="h-full w-full"></div>
+        <script>
+            window
+                .matchMedia("(prefers-color-scheme: dark)")
+                .addEventListener("change", (e) => {
+                    if (!localStorage.getItem("theme")) {
+                        if (e.matches) {
+                            document.documentElement.classList.add("dark")
+                        } else {
+                            document.documentElement.classList.remove("dark")
+                        }
+                    }
+                })
+        </script>
         <script type="module" src="/src/main.tsx"></script>
     </body>
 </html>
