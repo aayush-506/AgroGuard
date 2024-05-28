@@ -123,15 +123,25 @@ export default function UploadForm({ image, onPress }: Props) {
                 hover:outline-1
                 transition-all
                 overflow-hidden
+                relative
+                hover-text-overlay
             `}
         >
           {image && image.data
             ? (
-              <img
-                src={image.data}
-                alt="Uploaded"
-                className="object-fit h-full custom-scale"
-              />
+              <>
+                <img
+                  src={image.data}
+                  alt="Uploaded"
+                  className="object-fit h-full custom-scale"
+                  title="Change Image"
+                />
+                <div className="absolute inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center opacity-0 hover-text transition-opacity duration-300 ">
+                  <h1 className="text-white text-[41px] font-[900]">
+                    Change Image
+                  </h1>
+                </div>
+              </>
             )
             : (
               <>

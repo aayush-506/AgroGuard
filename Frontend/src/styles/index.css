@@ -1,27 +1,31 @@
 .container-full {
-    height: calc(100vh - 16px - 56px);
+  height: calc(100vh - 16px - 56px);
 }
 
 .transition-outline {
-    transition: 200ms outline linear;
+  transition: 200ms outline linear;
 }
 
 .transite-width {
-    transition: 200ms width linear;
+  transition: 200ms width linear;
 }
 
 .custom-scale {
-    transition: 200ms scale linear;
-    object-fit: cover;
-    &:hover {
-        scale: 1.1;
-    }
+  transition: 200ms scale linear;
+  object-fit: cover;
+  &:hover {
+    scale: 1.1;
+  }
 }
 
 .shadow-card {
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.31);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.31);
 }
 
 ::-webkit-scrollbar {
-    width: 0;
+  width: 0;
+}
+
+.hover-text-overlay:hover .hover-text {
+  opacity: 1;
 }
