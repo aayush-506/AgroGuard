@@ -70,7 +70,7 @@ AgroGuard is an innovative deep-learning-based application designed to identify 
 -   [**Sachin Acharya**](https://github.com/sachin-acharya-projects)
 -   [**Sahas Timilsina**](https://github.com/Sahas001)
 -   **Aviket Gurung**
--   **Prasiddha Sharma**
+-   [**Prasiddha Sharma**](https://github.com/godrock44)
 
 ## Contributing
 
