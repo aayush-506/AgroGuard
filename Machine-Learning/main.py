@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Configurations
 app.config["secret"] = "UNIQUE_SECRET_KEY"
 app.config["AUTH_TOKEN"] = "MY_AUTH_TOKEN"
-app.config["MODEL"] = "models/fire.pt"
+app.config["MODEL"] = "models/best.pt"
 
 
 @app.errorhandler(404)
