@@ -70,22 +70,28 @@ def predict():
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
         file.save(filepath)
-        
+
         disease = predict_image(filepath)
         if disease is None:
-            return jsonify({
-                "status": False,
-                "message": "Cannot predict the disease in the image."
-            }), 422
+            return (
+                jsonify(
+                    {
+                        "status": False,
+                        "message": "Cannot predict the disease in the image.",
+                    }
+                ),
+                422,
+            )
 
         species, disease = disease.split("__")
+
         # print(os.path.join(app.config["UPLOAD_FOLDER"], filename))
         return (
             jsonify(
                 {
                     "status": True,
                     "data": {
-                        "disease": f"{disease.replace("_", " ").strip()} ({species.strip()})",
+                        "disease": f"{disease.replace('_', ' ').strip()} ({species.strip()})",
                         "treatments": [
                             "Lorem ipsum dolor sit amet, qui minim labore adipisicing.",
                             "Minim sint cillum sint consectetur cupidatat.",
