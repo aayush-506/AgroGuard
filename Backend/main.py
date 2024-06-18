@@ -5,13 +5,14 @@ from utils import isFileAllowed
 from typing import Dict, Any
 from models import model
 import os
+import json
 
 app = Flask(__name__)
 app.config["secret"] = "SECRET_KEY_HERE"
 app.config["UPLOAD_FOLDER"] = "./uploads"
 
 
-def predict_image(image_src: str) -> str | None:
+def predict_image(image_src: str, confidence: int = 0.5) -> str | None:
     """Predict class from the image using the custom trained model.
 
     Args:
@@ -28,7 +29,8 @@ def predict_image(image_src: str) -> str | None:
 
         class_ = classes.get(probs.top1, None)
         if isinstance(class_, str):
-            return class_
+            print(probs.data)
+            return class_ if probs.top1conf > confidence else None
 
         return None
 
@@ -71,8 +73,8 @@ def predict():
         filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
         file.save(filepath)
 
-        disease = predict_image(filepath)
-        if disease is None:
+        disease_id = predict_image(filepath)
+        if disease_id is None:
             return (
                 jsonify(
                     {
@@ -82,25 +84,14 @@ def predict():
                 ),
                 422,
             )
+        print("Disaese ID", disease_id)
+        if "Healthy" in disease_id:
+            return jsonify({"status": True, "data": {"status": "healthy"}})
+        with open("./data/disease_treatments.json") as json_file:
+            json_data = json.load(json_file)
+            disease_data: Dict = json_data[disease_id]
 
-        species, disease = disease.split("__")
-
-        # print(os.path.join(app.config["UPLOAD_FOLDER"], filename))
-        return (
-            jsonify(
-                {
-                    "status": True,
-                    "data": {
-                        "disease": f"{disease.replace('_', ' ').strip()} ({species.strip()})",
-                        "treatments": [
-                            "Lorem ipsum dolor sit amet, qui minim labore adipisicing.",
-                            "Minim sint cillum sint consectetur cupidatat.",
-                        ],
-                    },
-                }
-            ),
-            200,
-        )
+            return jsonify({"status": True, "data": disease_data}), 200
     return (
         jsonify({"status": False, "message": "Only images are allowed to upload."}),
         415,

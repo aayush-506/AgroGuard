@@ -47,3 +47,11 @@
 .hover-text-overlay:hover .hover-text {
     opacity: 1;
 }
+
+.tab-bar li {
+    transition: .2s opacity;
+}
+
+.tab-bar li:hover {
+    opacity: 0.7;
+}

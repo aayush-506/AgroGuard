@@ -1,16 +1,20 @@
-// #00745 -> background
 type Props = {
-    treatment: string
+    description: string
+    header: string
     highlight?: string
 }
-export default function Card({ treatment, highlight }: Props) {
+export default function Card({ header, description, highlight }: Props) {
     return (
         <div
-            className={`h-[59px] ${
-                highlight ? `bg-[${highlight}]` : "bg-green-600 dark:bg-[#244935]"
-            } rounded-[5px] p-[10px] flex justify-center items-center overflow-hidden cursor-pointer shadow-card`}
+            className={`min-h-[59px] ${
+                highlight
+                    ? `bg-[${highlight}]`
+                    : "bg-green-600 dark:bg-[#244935]"
+            } rounded-[5px] p-[10px] flex items-center overflow-hidden cursor-pointer shadow-card`}
         >
-            <p className="text-white">{treatment}</p>
+            <p className="text-white text-left">
+                <strong className="capitalize">{header + ":"}</strong>&nbsp;{description}
+            </p>
         </div>
     )
 }

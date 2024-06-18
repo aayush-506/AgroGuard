@@ -59,6 +59,7 @@ type Props = {
 type ThemeScheme = "light" | "dark" | "system"
 export default function ThemeToggle({ rtype }: Props) {
     const [theme, setTheme] = useState<ThemeScheme>("system")
+    
     useEffect(() => {
         if (!("theme" in localStorage)) {
             setTheme("system")
@@ -94,15 +95,17 @@ export default function ThemeToggle({ rtype }: Props) {
             {rtype === "switch" ? (
                 <MaterialUISwitch
                     className="mr-5"
-                    checked={theme === "dark"}
+                    checked={theme === "dark" || document.documentElement.classList.contains("dark")}
                     onChange={(e) => {
                         const checkedStatus: boolean = e.target.checked
                         if (checkedStatus) {
                             toggleThemeClass("dark")
                             setTheme("dark")
+                            localStorage.setItem("theme", "dark")
                         } else {
                             toggleThemeClass("light")
                             setTheme("light")
+                            localStorage.setItem("theme", "light")
                         }
                     }}
                 />

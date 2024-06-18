@@ -15,9 +15,9 @@ export default function NavigationBar() {
                         Guard
                     </span>
                 </h1>
-                <p className="text-[14px] text-dark-3 dark:text-white-3 mt-[-5px]">
+                <p className="text-[14px] text-dark-3 dark:text-white-3 mt-[-5px] capitalize">
                     {/* Safeguarding crops, one leaf at a time! */}
-                    Plant-based diseases detection system
+                    Image-Based plant disease detection
                 </p>
             </div>
             <div className="ml-[auto] flex justify-center items-center">

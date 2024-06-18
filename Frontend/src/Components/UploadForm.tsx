@@ -3,7 +3,7 @@ import Box from "@mui/material/Box"
 import React, { useCallback, useEffect, useState } from "react"
 import { Toaster, toast } from "sonner"
 import axios, { AxiosError } from "axios"
-import Card from "./Card"
+import TabBar from "./TabBar"
 
 type Props = {
     onPress?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
@@ -16,7 +16,16 @@ export default function UploadForm({ image, onPress }: Props) {
     // Defining Hooks
     const [diseaseState, setDiseaseState] = useState<{
         disease: string
-        treatments: string[]
+        species: string
+
+        treatments: {
+            header: string
+            description: string
+        }[]
+        descriptions: {
+            header: string
+            description: string
+        }[]
     } | null>(null)
 
     let uploadImage: undefined | ((data: typeof image) => void) = undefined
@@ -41,6 +50,8 @@ export default function UploadForm({ image, onPress }: Props) {
                         error.response.data.message ??
                             "Cannot process your data due to some user-side errors."
                     )
+                else if (statusCode === 422)
+                    toast.error("Cannot predict the disease in the image.")
             } else if (error instanceof Error) console.error(error.message)
             else console.error(error)
         },
@@ -51,8 +62,10 @@ export default function UploadForm({ image, onPress }: Props) {
     uploadImage = useCallback(
         (data: typeof image) => {
             if (!data || !data.data) return
+            
             setDiseaseState(null)
             toast.info("Your request is being processed. Please wait a moment.")
+            
             const formData = new FormData()
             const file = prepareFileForUpload(data.data, data.name)
             formData.append("image", file)
@@ -60,18 +73,50 @@ export default function UploadForm({ image, onPress }: Props) {
                 .post("/api/disease/predict", formData)
                 .then((data) => {
                     const result = data.data
-                    if (result["status"]) {
-                        const data_ = {
-                            disease: result["data"]["disease"],
-                            treatments: result["data"][
-                                "treatments"
-                            ] as string[],
-                        }
-                        setDiseaseState({ ...data_ })
-                        toast.success(
-                            "Your request has been successfully processed."
-                        )
+                    if (!result.status) throw new Error(result.message)
+                        toast.success("You request has been processed.")
+                    if (
+                        "status" in result.data &&
+                        result.data.status === "healthy"
+                    ) {
+                        return setDiseaseState({
+                            disease: "Healthy",
+                            species: "",
+                            descriptions: [{
+                                header: "Healthy",
+                                description: "Your plant appears to be healthy. There is no need for any treatments."
+                            }],
+                            treatments: [{
+                                header: "Healthy",
+                                description: "Your plant appears to be healthy. There is no need for any treatments."
+                            }]
+                        })
                     }
+                    const descriptions: {
+                        header: string
+                        description: string
+                    }[] = Object.entries(result.data.descriptions).map(
+                        ([key, value]) => ({
+                            header: key,
+                            description: value as string,
+                        })
+                    )
+                    const treatments: {
+                        header: string
+                        description: string
+                    }[] = Object.entries(result.data.treatments).map(
+                        ([key, value]) => ({
+                            header: key,
+                            description: value as string,
+                        })
+                    )
+
+                    setDiseaseState({
+                        descriptions,
+                        treatments,
+                        disease: result.data.disease,
+                        species: result.data.species,
+                    })
                 })
                 .catch(handleError)
         },
@@ -179,23 +224,18 @@ export default function UploadForm({ image, onPress }: Props) {
                         <>
                             <div className="h-full w-full block p-8">
                                 <h1 className="w-fit font-[900] text-[29px] dark:text-white cursor-pointer">
-                                    {diseaseState.disease}
+                                    {diseaseState.disease}&nbsp;
+                                    {diseaseState.species !== "" ? (
+                                        <span className="capitalize">
+                                            ({diseaseState.species})
+                                        </span>
+                                    ) : null}
                                 </h1>
-                                <p className="w-fit font-[600] mt-[-13px] text-[15px] text-[#8d8d8d] dark:text-[#CECECE]">
-                                    Treatments
-                                </p>
 
-                                <div className="mt-10 flex flex-col gap-5">
-                                    {diseaseState.treatments.map(
-                                        (treatment, index) => (
-                                            <Card
-                                                treatment={treatment}
-                                                key={`card-${index}`}
-                                            />
-                                        )
-                                    )}
-                                </div>
-                                <div className="h-[20px]" />
+                                <TabBar
+                                    description={diseaseState.descriptions}
+                                    treatment={diseaseState.treatments}
+                                />
                             </div>
                         </>
                     ) : (
