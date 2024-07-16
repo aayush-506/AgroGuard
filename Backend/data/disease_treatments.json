@@ -27,18 +27,164 @@
             "Crop Rotation and Tillage": "Rotate crops and till the soil to reduce the amount of infected crop residue."
         }
     },
+    "Corn___Healthy": {
+        "species": "corn",
+        "disease": "Healthy",
+        "descriptions": {
+            "symptoms": "No symptoms present. The plant exhibits normal growth and development.",
+            "conditions": "Optimal growing conditions with proper management practices.",
+            "pathogen": "None"
+        },
+        "treatments": {
+            "Good Agricultural Practices": "Maintain good agricultural practices such as crop rotation, proper irrigation, and balanced fertilization to keep plants healthy."
+        }
+    },
     "Corn___Northern_Leaf_Blight": {
         "species": "corn",
         "disease": "Northern Leaf Blight",
         "descriptions": {
             "symptoms": "Large, elongated, cigar-shaped gray-green or tan lesions on leaves. Severe infections can cause extensive leaf blighting, resulting in premature death and yield loss.",
-            "pathogen": "Caused by the fungus Exserohilum turcicum.",
-            "conditions": "Moderate to warm temperatures (64-81°F) with high humidity or frequent rain favor disease development."
+            "conditions": "Moderate to warm temperatures (64-81°F) with high humidity or frequent rain favor disease development.",
+            "pathogen": "Caused by the fungus Exserohilum turcicum."
         },
         "treatments": {
             "Resistant Varieties": "Choose hybrids with genetic resistance to northern leaf blight.",
             "Fungicides": "Use fungicides such as strobilurins (e.g., azoxystrobin) and triazoles (e.g., tebuconazole) at early signs of disease or when conditions are favorable for disease development.",
             "Crop Rotation and Residue Management": "Practice crop rotation and manage crop residues through tillage to reduce the pathogen load."
+        }
+    },
+    "Potato___Early_Blight": {
+        "species": "potato",
+        "disease": "Early Blight",
+        "descriptions": {
+            "symptoms": "Small, dark brown to black lesions on leaves, often with concentric rings giving a target-like appearance. Lesions can also appear on stems and tubers.",
+            "conditions": "Warm temperatures (75-85°F) and high humidity or frequent rain.",
+            "pathogen": "Caused by the fungus Alternaria solani."
+        },
+        "treatments": {
+            "Resistant Varieties": "Plant potato varieties with resistance to early blight.",
+            "Fungicides": "Apply fungicides such as chlorothalonil or mancozeb at regular intervals, starting before symptoms appear.",
+            "Crop Rotation and Sanitation": "Rotate crops and remove infected plant debris to reduce the source of inoculum."
+        }
+    },
+    "Potato___Healthy": {
+        "species": "potato",
+        "disease": "Healthy",
+        "descriptions": {
+            "symptoms": "No symptoms present. The plant exhibits normal growth and development.",
+            "conditions": "Optimal growing conditions with proper management practices.",
+            "pathogen": "None"
+        },
+        "treatments": {
+            "Good Agricultural Practices": "Maintain good agricultural practices such as crop rotation, proper irrigation, and balanced fertilization to keep plants healthy."
+        }
+    },
+    "Potato___Late_Blight": {
+        "species": "potato",
+        "disease": "Late Blight",
+        "descriptions": {
+            "symptoms": "Water-soaked, pale green to dark brown lesions on leaves and stems. Lesions may have a yellow halo and can rapidly expand, leading to plant collapse. Tubers can develop firm, brown, granular lesions.",
+            "conditions": "Cool, moist conditions with temperatures between 50-60°F and high humidity.",
+            "pathogen": "Caused by the oomycete Phytophthora infestans."
+        },
+        "treatments": {
+            "Resistant Varieties": "Plant resistant potato varieties.",
+            "Fungicides": "Apply fungicides such as metalaxyl or mandipropamid at regular intervals, especially during favorable conditions for the disease.",
+            "Crop Rotation and Sanitation": "Practice crop rotation and remove and destroy infected plant debris to reduce inoculum sources."
+        }
+    },
+    "Rice___Brown_Spot": {
+        "species": "rice",
+        "disease": "Brown Spot",
+        "descriptions": {
+            "symptoms": "Small, circular to oval brown spots with gray or whitish centers on leaves, stems, and grains. Severe infections can cause significant yield loss.",
+            "conditions": "High humidity, warm temperatures (77-82°F), and poor soil fertility.",
+            "pathogen": "Caused by the fungus Bipolaris oryzae."
+        },
+        "treatments": {
+            "Resistant Varieties": "Plant resistant rice varieties.",
+            "Fungicides": "Apply fungicides such as tricyclazole or propiconazole during early stages of disease development.",
+            "Nutrient Management": "Ensure balanced soil fertility, particularly with adequate levels of potassium and phosphorus."
+        }
+    },
+    "Rice___Healthy": {
+        "species": "rice",
+        "disease": "Healthy",
+        "descriptions": {
+            "symptoms": "No symptoms present. The plant exhibits normal growth and development.",
+            "conditions": "Optimal growing conditions with proper management practices.",
+            "pathogen": "None"
+        },
+        "treatments": {
+            "Good Agricultural Practices": "Maintain good agricultural practices such as crop rotation, proper irrigation, and balanced fertilization to keep plants healthy."
+        }
+    },
+    "Rice___Leaf_Blast": {
+        "species": "rice",
+        "disease": "Leaf Blast",
+        "descriptions": {
+            "symptoms": "Spindle-shaped lesions with gray centers and brown margins on leaves. Severe infections can lead to leaf death and significant yield loss.",
+            "conditions": "High humidity, frequent rainfall, and temperatures between 77-86°F.",
+            "pathogen": "Caused by the fungus Magnaporthe oryzae."
+        },
+        "treatments": {
+            "Resistant Varieties": "Plant resistant rice varieties.",
+            "Fungicides": "Apply fungicides such as tricyclazole or isoprothiolane at early stages of disease development.",
+            "Water Management": "Avoid excessive irrigation and maintain proper water levels to reduce humidity around plants."
+        }
+    },
+    "Rice___Neck_Blast": {
+        "species": "rice",
+        "disease": "Neck Blast",
+        "descriptions": {
+            "symptoms": "Lesions on the neck of the panicle, causing it to break and resulting in grain loss. Infected grains may turn white or gray and be unfilled.",
+            "conditions": "High humidity, frequent rainfall, and temperatures between 77-86°F.",
+            "pathogen": "Caused by the fungus Magnaporthe oryzae."
+        },
+        "treatments": {
+            "Resistant Varieties": "Plant resistant rice varieties.",
+            "Fungicides": "Apply fungicides such as tricyclazole or isoprothiolane at the booting stage of rice growth.",
+            "Water Management": "Avoid excessive irrigation and maintain proper water levels to reduce humidity around plants."
+        }
+    },
+    "Wheat___Brown_Rust": {
+        "species": "wheat",
+        "disease": "Brown Rust",
+        "descriptions": {
+            "symptoms": "Small, circular to oval orange-brown pustules (uredinia) on leaves and stems. Severe infections can lead to leaf death and reduced grain fill.",
+            "conditions": "Cool temperatures (59-72°F) and high humidity or prolonged leaf wetness.",
+            "pathogen": "Caused by the fungus Puccinia recondita."
+        },
+        "treatments": {
+            "Resistant Varieties": "Plant wheat varieties with resistance to brown rust.",
+            "Fungicides": "Apply fungicides such as propiconazole or tebuconazole at the first sign of disease or when conditions are favorable for disease development.",
+            "Crop Rotation and Residue Management": "Practice crop rotation and manage crop residues to reduce the inoculum load."
+        }
+    },
+    "Wheat___Healthy": {
+        "species": "wheat",
+        "disease": "Healthy",
+        "descriptions": {
+            "symptoms": "No symptoms present. The plant exhibits normal growth and development.",
+            "conditions": "Optimal growing conditions with proper management practices.",
+            "pathogen": "None"
+        },
+        "treatments": {
+            "Good Agricultural Practices": "Maintain good agricultural practices such as crop rotation, proper irrigation, and balanced fertilization to keep plants healthy."
+        }
+    },
+    "Wheat___Yellow_Rust": {
+        "species": "wheat",
+        "disease": "Yellow Rust",
+        "descriptions": {
+            "symptoms": "Small, yellow pustules (uredinia) that form in stripes on leaves and stems. Severe infections can lead to leaf death and reduced grain fill.",
+            "conditions": "Cool temperatures (46-59°F) and high humidity.",
+            "pathogen": "Caused by the fungus Puccinia striiformis."
+        },
+        "treatments": {
+            "Resistant Varieties": "Plant wheat varieties with resistance to yellow rust.",
+            "Fungicides": "Apply fungicides such as propiconazole or tebuconazole at the first sign of disease or when conditions are favorable for disease development.",
+            "Crop Rotation and Residue Management": "Practice crop rotation and manage crop residues to reduce the inoculum load."
         }
     }
 }

@@ -4,8 +4,9 @@ from flask import Flask, jsonify, request
 from utils import isFileAllowed
 from typing import Dict, Any
 from models import model
-import os
+import numpy as np
 import json
+import os
 
 app = Flask(__name__)
 app.config["secret"] = "SECRET_KEY_HERE"
@@ -24,15 +25,14 @@ def predict_image(image_src: str, confidence: int = 0.5) -> str | None:
     results: Results = model(image_src)
 
     for result in results:
-        probs = result.probs
-        classes: Dict[int, str | Any] = result.names
-
-        class_ = classes.get(probs.top1, None)
-        if isinstance(class_, str):
-            print(probs.data)
-            return class_ if probs.top1conf > confidence else None
-
-        return None
+        names = result.names
+        probs = result.probs.data.tolist()
+        max_prob_index = np.argmax(probs)
+        
+        if probs[max_prob_index] < confidence:
+            return None
+        print(names[max_prob_index], type(names[max_prob_index]))
+        return names[max_prob_index]
 
 
 @app.errorhandler(404)
@@ -73,7 +73,7 @@ def predict():
         filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
         file.save(filepath)
 
-        disease_id = predict_image(filepath)
+        disease_id = predict_image(filepath, confidence=0.7)
         if disease_id is None:
             return (
                 jsonify(
@@ -85,11 +85,14 @@ def predict():
                 422,
             )
         print("Disaese ID", disease_id)
-        if "Healthy" in disease_id:
-            return jsonify({"status": True, "data": {"status": "healthy"}})
+        # if "Healthy" in disease_id:
+        #     return jsonify({"status": True, "data": {"status": "healthy"}})
         with open("./data/disease_treatments.json") as json_file:
             json_data = json.load(json_file)
-            disease_data: Dict = json_data[disease_id]
+            try:
+                disease_data: Dict = json_data[disease_id]
+            except KeyError:
+                return jsonify({"status": False, "message": "Disease Not Found in our database"}), 404
 
             return jsonify({"status": True, "data": disease_data}), 200
     return (
