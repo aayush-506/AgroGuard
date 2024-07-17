@@ -75,23 +75,7 @@ export default function UploadForm({ image, onPress }: Props) {
                     const result = data.data
                     if (!result.status) throw new Error(result.message)
                         toast.success("You request has been processed.")
-                    if (
-                        "status" in result.data &&
-                        result.data.status === "healthy"
-                    ) {
-                        return setDiseaseState({
-                            disease: "Healthy",
-                            species: "",
-                            descriptions: [{
-                                header: "Healthy",
-                                description: "Your plant appears to be healthy. There is no need for any treatments."
-                            }],
-                            treatments: [{
-                                header: "Healthy",
-                                description: "Your plant appears to be healthy. There is no need for any treatments."
-                            }]
-                        })
-                    }
+
                     const descriptions: {
                         header: string
                         description: string

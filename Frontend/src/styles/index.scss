@@ -1,3 +1,33 @@
+body::before {
+    content: "";
+
+    --line: color-mix(in lch, canvasText 25%, transparent);
+    --size: 60px;
+
+    height: 100vh;
+    width: 100vw;
+
+    position: fixed;
+    top: 0;
+    z-index: -1;
+
+    background: linear-gradient(
+                90deg,
+                var(--line) 1px,
+                transparent 1px var(--size)
+            )
+            0 -5vmin / var(--size) var(--size),
+        linear-gradient(var(--line) 1px, transparent 1px var(--size)) 0 -5vmin /
+            var(--size) var(--size);
+    mask: linear-gradient(-15deg, transparent 45%, white);
+    transform-style: flat;
+    pointer-events: none;
+}
+
+html.dark body::before {
+    --line: #666666;
+}
+
 .container-full {
     height: calc(100vh - 16px - 56px);
 }
@@ -43,13 +73,12 @@
     opacity: 1;
 }
 
-
 .hover-text-overlay:hover .hover-text {
     opacity: 1;
 }
 
 .tab-bar li {
-    transition: .2s opacity;
+    transition: 0.2s opacity;
 }
 
 .tab-bar li:hover {
