@@ -22,13 +22,16 @@ def predict_image(image_src: str, confidence: int = 0.5) -> str | None:
     Returns:
         str | None: Classname of the predicted image.
     """
-    results: Results = model(image_src)
-
+    try:
+        results: Results = model(image_src)
+    except FileNotFoundError:
+        return
+    
     for result in results:
         names = result.names
         probs = result.probs.data.tolist()
         max_prob_index = np.argmax(probs)
-        
+
         if probs[max_prob_index] < confidence:
             return None
         print(names[max_prob_index], type(names[max_prob_index]))
@@ -67,7 +70,7 @@ def predict():
             400,
         )
 
-    # print(file.mimetype)
+    print(file.mimetype)
     if file and "image" in file.mimetype.lower():
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
@@ -92,7 +95,15 @@ def predict():
             try:
                 disease_data: Dict = json_data[disease_id]
             except KeyError:
-                return jsonify({"status": False, "message": "Disease Not Found in our database"}), 404
+                return (
+                    jsonify(
+                        {
+                            "status": False,
+                            "message": "Disease Not Found in our database",
+                        }
+                    ),
+                    404,
+                )
 
             return jsonify({"status": True, "data": disease_data}), 200
     return (
