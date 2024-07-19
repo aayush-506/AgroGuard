@@ -34,7 +34,7 @@ def predict_image(image_src: str, confidence: int = 0.5) -> str | None:
 
         if probs[max_prob_index] < confidence:
             return None
-        print(names[max_prob_index], type(names[max_prob_index]))
+        # print(names[max_prob_index], type(names[max_prob_index]))
         return names[max_prob_index]
 
 
@@ -88,8 +88,8 @@ def predict():
                 422,
             )
         print("Disaese ID", disease_id)
-        # if "Healthy" in disease_id:
-        #     return jsonify({"status": True, "data": {"status": "healthy"}})
+        if "Invalid" in disease_id:
+            return jsonify({"status": False, "message": "Please upload picture of plant leaf."}), 415
         with open("./data/disease_treatments.json") as json_file:
             json_data = json.load(json_file)
             try:
