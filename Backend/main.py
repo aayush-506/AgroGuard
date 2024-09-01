@@ -8,7 +8,13 @@ import numpy as np
 import json
 import os
 
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
+
+
+app = Flask(__name__)
+
 app.config["secret"] = "SECRET_KEY_HERE"
 app.config["UPLOAD_FOLDER"] = "./uploads"
 
@@ -114,4 +120,6 @@ def predict():
 
 if __name__ == "__main__":
     os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
+
+
